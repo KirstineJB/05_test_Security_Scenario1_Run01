@@ -2,7 +2,7 @@ name: SonarQube
 on:
   push:
     branches:
-      - main
+      - Scenario1_Setup
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -42,6 +42,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"KirstineJB_05_test_Security_Setup" /o:"kirstine13" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"KirstineJB_05_test_Security_Scenario1_Run01" /o:"kirstine13" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           dotnet build "${{ github.workspace }}/BackendAPI/BackendAPI.sln"
           ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
