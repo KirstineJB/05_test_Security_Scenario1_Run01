@@ -1,0 +1,85 @@
+API DESIGN SPECIFICATION
+========================
+
+Document Reference: API-SPEC-001
+Version: 1.0
+Date: 28 February 2026
+
+1. OVERVIEW
+-----------
+This specification describes the REST API for the Document Management System.
+The API provides endpoints to retrieve document metadata and download document
+files. It is implemented using ASP.NET Core 8 and follows REST conventions.
+
+Base URL: /api
+
+2. GENERAL CONVENTIONS
+-----------------------
+  - All responses use JSON (Content-Type: application/json) unless a file is returned.
+  - HTTP status codes follow standard semantics (200, 404, 500).
+  - Date/time values are ISO 8601 strings in UTC.
+  - File sizes are expressed in bytes.
+
+3. ENDPOINTS
+------------
+
+3.1 List Documents
+  Method:  GET
+  Path:    /api/documents
+  Summary: Returns metadata for all available documents.
+
+  Response 200 OK:
+  [
+    {
+      "id": 1,
+      "name": "Project Charter",
+      "description": "Defines the project scope, objectives, and key stakeholders.",
+      "contentType": "text/plain",
+      "fileSizeBytes": 2048,
+      "uploadedAt": "2025-11-03T00:00:00Z",
+      "fileName": "project-charter.txt"
+    },
+    ...
+  ]
+
+3.2 Download Document
+  Method:  GET
+  Path:    /api/documents/{id}/download
+  Summary: Streams the document file to the client.
+
+  Path Parameters:
+    id (integer, required) — the document identifier
+
+  Response 200 OK:
+    Content-Type: <document content type>
+    Content-Disposition: attachment; filename="<fileName>"
+    Body: binary file content
+
+  Response 404 Not Found:
+    Returned when no document with the given id exists.
+
+4. DATA MODEL
+-------------
+
+Document:
+  id           integer   Unique document identifier
+  name         string    Human-readable document title
+  description  string    Short summary of the document contents
+  contentType  string    MIME type of the file (e.g. text/plain)
+  fileSizeBytes integer  File size in bytes
+  uploadedAt   datetime  Date and time the document was added (UTC)
+  fileName     string    The file name used when downloading
+
+5. ERROR HANDLING
+-----------------
+  404 Not Found — the requested document id does not exist.
+  500 Internal Server Error — an unexpected server-side error occurred.
+
+6. FUTURE CONSIDERATIONS
+-------------------------
+  - Authentication (JWT Bearer) to restrict document access.
+  - Pagination for large document catalogues.
+  - Document upload endpoint (POST /api/documents).
+  - Full-text search across document content.
+
+End of Specification

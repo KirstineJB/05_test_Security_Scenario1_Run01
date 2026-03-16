@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Library</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>Document Library</h1>
+      <p class="subtitle">Browse and download available documents</p>
+    </div>
+  </header>
+
+  <main class="content">
+    <div id="status-banner" class="status-banner hidden"></div>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Available Documents</h2>
+        <span id="doc-count" class="badge"></span>
+      </div>
+
+      <div id="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading documents&hellip;</p>
+      </div>
+
+      <div id="error-state" class="error-state hidden">
+        <p id="error-message">Failed to load documents. Please try again later.</p>
+        <button class="btn btn-secondary" onclick="loadDocuments()">Retry</button>
+      </div>
+
+      <table id="doc-table" class="doc-table hidden">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th class="col-size">Size</th>
+            <th class="col-date">Uploaded</th>
+            <th class="col-action">Download</th>
+          </tr>
+        </thead>
+        <tbody id="doc-tbody"></tbody>
+      </table>
+
+      <div id="empty-state" class="empty-state hidden">
+        <p>No documents are currently available.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Document Library &mdash; powered by BackendAPI</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

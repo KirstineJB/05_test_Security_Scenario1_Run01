@@ -1,0 +1,55 @@
+PROJECT CHARTER
+===============
+
+Project Title: Document Management System
+Version: 1.0
+Date: 3 November 2025
+
+1. PROJECT PURPOSE
+------------------
+This project delivers a web-based document management system that allows
+users to browse and download organisational documents through a secure
+REST API backed interface.
+
+2. SCOPE
+--------
+In Scope:
+  - Document catalogue API (list and download endpoints)
+  - Static web frontend for browsing and downloading documents
+  - Sample document set for demonstration purposes
+
+Out of Scope:
+  - Document upload functionality
+  - User authentication and authorisation
+  - Document editing or version control
+
+3. STAKEHOLDERS
+---------------
+  - Project Sponsor: Technology Leadership Team
+  - Product Owner: IT Operations Manager
+  - Development Team: Backend and Frontend Engineers
+  - End Users: All internal staff members
+
+4. OBJECTIVES
+-------------
+  1. Provide a single, unified interface for locating and downloading documents.
+  2. Minimise friction for end users — no login required for the initial release.
+  3. Deliver a maintainable codebase with clear separation of concerns.
+
+5. SUCCESS CRITERIA
+-------------------
+  - Users can list all available documents from the web interface.
+  - Users can download any document in one click.
+  - API responds within 200 ms under normal load.
+
+6. TIMELINE
+-----------
+  Milestone 1 — API design complete:    Week 1
+  Milestone 2 — Backend implementation: Week 2
+  Milestone 3 — Frontend integration:   Week 3
+  Milestone 4 — Testing and review:     Week 4
+
+7. APPROVALS
+------------
+  Approved by: [Project Sponsor]
+  Date: 3 November 2025
